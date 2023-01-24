@@ -1,0 +1,36 @@
+﻿@using La_mia_pizzeria_1_n.Models;
+@model PizzaCategoriesView
+
+<div class="container">
+    <form asp-controller="Pizza" asp-action="Create" method="post">
+        @Html.AntiForgeryToken()
+        <div class="mb-3">
+            <label>Nome:</label>
+            <input asp-for="Pizza.Name" type="text" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label>Descrizione:</label>
+            <textarea asp-for="Pizza.Description" rows="10" class="d-block w-100"></textarea>
+        </div>
+        <div class="mb-3">
+            <label>Categoria:</label>
+            <select asp-for="Pizza.CategoryId" rows="10" class="d-block w-100">
+                <option value=""></option>
+                @foreach (Category category in Model.Categories) {
+                    <option value="@category.Id">@category.Title</option>
+                }
+            </select>
+            <span asp-validation-for="Pizza.CategoryId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label>Tag:</label>
+            <select asp-for="TagsSelectedFromMultipleSelect" asp-items="@Model.Tags" multiple size="10" class="form-control mb-2 mr-sm-2 ml-sm-3 leftList">
+            </select>
+        </div>
+        <div class="mb-3 form-check">
+            <label>Path Immagine:</label>
+            <input asp-for="Pizza.Img" type="text" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Salva</button>
+    </form>
+</div>
