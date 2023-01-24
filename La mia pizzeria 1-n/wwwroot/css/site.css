@@ -58,7 +58,12 @@ body {
     margin-bottom: 10px;
 }
 
-.miei-buttons {
+.miei-buttons-post {
     display: flex;
     margin: 5px;
+}
+
+.post .card-img-top {
+    height: 15vw;
+    object-fit: cover;
 }
